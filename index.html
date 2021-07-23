@@ -37,8 +37,8 @@
     <link href="https://prophone.herokuapp.com/staticfiles/landing_page_gen/style.css" rel="stylesheet">
     
     <link href="https://prophone.herokuapp.com/staticfiles/landing_page_gen/render.css" rel="stylesheet">
-    <script src="https://prophone.herokuapp.com/staticfiles/landing_page_gen/render.js"></script> 
     
+    <script src="https://prophone.herokuapp.com/staticfiles/landing_page_gen/render.js"></script> 
 </head>
 
 <body>
@@ -46,12 +46,12 @@
 
 
 <div class = "flex w-full flex-col">  
-    <div  class="sticky w-full lg:h-25 lg:py-4 items-start justify-start  bg-white text-gray-700  dark-mode:text-gray-200 dark-mode:bg-gray-800">
+    <div class="fixed z-40 w-full lg:h-25 lg:py-4 items-start justify-start  bg-white text-gray-700  dark-mode:text-gray-200 dark-mode:bg-gray-800">
   <div x-data="{ open: false }" class="flex flex-col lg:flex-r max-w-screen-xl px-4 mx-auto lg:items-center lg:justify-between lg:flex-row lg:px-6 lg:px-8">
     <div class="py-4 flex flex-row items-center justify-between">
-     
-     <a href="#about"> <img class="h-16 w-auto relative" src="https://landing-page-app-hero-images.s3.amazonaws.com/media/M7JHLJ2DYOXH9UXNR25MESYJJ8KRCVZ67TPRIDKJ.png" alt="Bielinski Bros Landscaping logo"> </a>
-    
+      
+        <a href= " #about "> <img class="h-16 w-auto relative" src="https://landing-page-app-hero-images.s3.amazonaws.com/media/M7JHLJ2DYOXH9UXNR25MESYJJ8KRCVZ67TPRIDKJ.png" alt="Bielinski Bros Landscaping logo"> </a>
+      
       <button class="lg:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
           <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -59,7 +59,8 @@
         </svg>
       </button>
     </div>
-    <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 lg:pb-0 hidden lg:flex lg:justify-end lg:flex-row">
+    <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 lg:pb-0 hidden lg:flex  lg:flex-row  lg:justify-end ">
+    
       
 <a 
     class="px-4 py-2 mt-2 text-lg  font-bold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" 
@@ -92,43 +93,47 @@
     class="px-4 py-2 mt-2 text-lg  font-bold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" 
     href="#find-us">Service Areas
 </a>
-     
-
-      
-         <div class = "px-4 py-2 lg:pb-3 mt-2 text-xl font-bold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"x-data="{open: false}">
-        
-            <a target = "_blank"  x-on:click.prevent="open = true" class="" href="">Send us a Text</a>
-      
-
-      
-        <div x-show.transition.opacity="open" class="p-4 fixed flex justify-center items-center inset-0 bg-black text-black bg-opacity-75 z-50">
-                <form x-on:click.away="open = false" x-show.transition="open" class="max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5">
-                        <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <input type="text" name="first-name" id="2-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
-                        </div>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <input type="text" name="last-name" id="2-last-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Last Name">
-                        </div>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <input type="text" name="phone-number" id="2-phone-number" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Phone Number">
-                        </div>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <textarea name="message" cols="5" id="2-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
-                        </div>
-                        <div class="block">
-                        <button type="button"  onclick= "send_sms(2, 'Bielinski-Bros-Landscaping')" class="w-full px-3 py-4 font-bold font-lg text-white  bg-green-700  rounded-lg">Send</button> 
-                        </div>
-                        
+   
     
-                </form>
-            </div>
+  
+
+
+    
+      <div class = "px-4 py-2 lg:pb-3 mt-2 text-xl font-bold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"x-data="{open: false}">
+      
+          <a target = "_blank"  x-on:click.prevent="open = true" class="" href="">Send us a Text</a>
+            <div x-show.transition.opacity="open" class="transform-none p-4 fixed h-screen w-screen flex justify-center items-center bottom-0 right-0 bg-black bg-opacity-75 z-50">
+    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5">
+            <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="first-name" id="0-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
         </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="last-name" id="0-last-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Last Name">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="phone-number" id="0-phone-number" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Phone Number">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <textarea name="message" cols="5" id="0-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
+        </div>
+        <div class="block">
+        <button type="button" 
+         
+        onclick= "send_sms(0, 'Bielinski-Bros-Landscaping')" 
+        class="w-full px-3 py-4 font-bold font-lg text-white  bg-black-900 text-white hover:bg-black hover:text-black-900 rounded-lg">Send</button> 
+        </div>           
+
+    </form>
+</div>
+           
+      
+        
     </nav>
-    </div>
   </div>
-    <section  
-class="flex flex-col w-full  bg-green-700 text-white  lg:flex-row lg:flex-wrap sm:mx-auto pt-12 mt-12">
+</div>
+    <section   
+class="flex relative flex-col w-full  bg-green-700 text-white  lg:flex-row lg:flex-wrap sm:mx-auto pt-12 mt-12">
     <div class="flex justify-end p-8 lg:py-32 lg:px-16 lg:pl-10 lg:w-1/2">
         <div class="flex flex-col items-center lg:items-start justify-center w-full lg:max-w-lg">
             <h2 class="mb-3 text-3xl text-center font-extrabold  leading-none sm:text-4xl lg:text-7xl text-center lg:text-left">
@@ -140,38 +145,97 @@ class="flex flex-col w-full  bg-green-700 text-white  lg:flex-row lg:flex-wrap s
             </h1>
             
             <h2 class="py-5 mb-5 lg:text-xl text-center lg:text-left">
-            
             </h2>
             
-            <div class="flex text-center justify-center items-center" x-data="{open: false}">
-                <button  type="button" x-on:click.prevent="open = true" class="inline-flex items-center justify-center h-24 px-6 lg:mr-6 tracking-wide transition duration-200 rounded-lg focus:shadow-outline focus:outline-none  bg-black-900 text-white hover:bg-white hover:text-green-700 ">
-                    <h5 class="text-3xl font-extrabold">Send us a Text</h5> 
-                </button>
-                <div x-show.transition.opacity="open" class="p-4 fixed flex justify-center items-center inset-0 bg-black bg-opacity-75 z-50">
-                    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5">
-                            <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <input type="text" name="first-name" id="1-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
-                        </div>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <input type="text" name="last-name" id="1-last-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Last Name">
-                        </div>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <input type="text" name="phone-number" id="1-phone-number" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Phone Number">
-                        </div>
-                        <div class="block mb-4 border border-gray-200 rounded-lg">
-                            <textarea name="message" cols="5" id="1-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
-                        </div>
-                        <div class="block">
-                        <button type="button"  onclick= "send_sms(1, 'Bielinski-Bros-Landscaping')" class="w-full px-3 py-4 font-bold font-lg text-white  bg-green-700  rounded-lg">Send</button> 
-                        </div>
-                            
-     
-                    </form>
+            <div class="flex flex-col lg:flex-row flex-grow flex-col space-y-5 md:space-y-0 w-full lg:w-auto md:space-y-5 lg:space-y-0">
+                <div class=" w-full lg:w-auto">
+                
+  
+                </div>
+
+                <div id="cover-button" class="w-full lg:w-auto ">
+                    
+ 
+    <div id="" class="flex text-center justify-center items-center z-50 w-full lg:w-auto " x-data="{open: false}">
+        
+<button 
+ id="" type="button" x-on:click.prevent="open = true" class=" 
+  w-full lg:w-auto 
+
+    inline-flex items-center justify-center h-24 px-6 lg:mr-6 tracking-wide transition duration-200 rounded-lg focus:shadow-outline focus:outline-none  bg-black-900 text-white hover:bg-white hover:text-green-700">
+    <h5 class="text-3xl font-extrabold">Send us a Text</h5> 
+</button>
+
+        <div x-show.transition.opacity="open" class="transform-none p-4 fixed h-screen w-screen flex justify-center items-center bottom-0 right-0 bg-black bg-opacity-75 z-50">
+    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5">
+            <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="first-name" id="1-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="last-name" id="1-last-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Last Name">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="phone-number" id="1-phone-number" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Phone Number">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <textarea name="message" cols="5" id="1-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
+        </div>
+        <div class="block">
+        <button type="button" 
+         
+        onclick= "send_sms(1, 'Bielinski-Bros-Landscaping')" 
+        class="w-full px-3 py-4 font-bold font-lg text-white  bg-black-900 text-white hover:bg-black hover:text-black-900 rounded-lg">Send</button> 
+        </div>           
+
+    </form>
+</div>
+    </div>
+ 
+                </div>
+
+                <div>
+                    
+ 
+    <div id="" class="flex text-center justify-center items-center z-50 w-full lg:w-auto " x-data="{open: false}">
+        
+<button 
+ id="side-button" type="button" x-on:click.prevent="open = true" class=" 
+  
+
+   mb-3 fixed bottom-0 -right-80 z-10 mr-3 lg:mr-0 z-50 inline-flex items-center justify-center h-24 px-6 lg:mr-6 tracking-wide transition duration-200 rounded-lg focus:shadow-outline focus:outline-none  bg-black-900 text-white hover:bg-white hover:text-green-700">
+    <h5 class="text-3xl font-extrabold">Send us a Text</h5> 
+</button>
+
+        <div x-show.transition.opacity="open" class="transform-none p-4 fixed h-screen w-screen flex justify-center items-center bottom-0 right-0 bg-black bg-opacity-75 z-50">
+    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5">
+            <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="first-name" id="2-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="last-name" id="2-last-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Last Name">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <input type="text" name="phone-number" id="2-phone-number" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Phone Number">
+        </div>
+        <div class="block mb-4 border border-gray-200 rounded-lg">
+            <textarea name="message" cols="5" id="2-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
+        </div>
+        <div class="block">
+        <button type="button" 
+         
+        onclick= "send_sms(2, 'Bielinski-Bros-Landscaping')" 
+        class="w-full px-3 py-4 font-bold font-lg text-white  bg-black-900 text-white hover:bg-black hover:text-black-900 rounded-lg">Send</button> 
+        </div>           
+
+    </form>
+</div>
+    </div>
+
                 </div>
 
             </div>
-            
         </div>
     </div>
     <div class="relative order-first lg:order-last block lg:w-1/2 ">
@@ -180,6 +244,9 @@ class="flex flex-col w-full  bg-green-700 text-white  lg:flex-row lg:flex-wrap s
         <img src="https://landing-page-app-hero-images.s3.amazonaws.com/media/HXC6IOMHA1O1PTCWMZH8RAS6X6NKJDBFJRY2VG7Z.jpeg"  alt = "Main hero image of Bielinski Bros Landscaping performing Landscaping &amp; Hardscaping work"  class="object-cover w-full lg:absolute h-80 lg:h-full">
     
     </div>
+
+
+        
 </section>
     <section   id = "about" 
 class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  bg-white text-green-700 ">
@@ -266,9 +333,11 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
             </div>
             
                 <div class = "mt-10 mb-0 flex flex-row justify-center lg:justify-start text-center w-full lg:max-w-lg">
+                
                     <h2  class="mb-3 text-4xl justify-center lg:justify-start text-center lg:text-left text-green-700 font-extrabold leading-none tracking-wide text-center">
                         Connect with us on Social
                     </h2>
+                
                 </div>
                 <div class = "flex flex-row mb-5 justify-center space-x-3 md:space-x-8 lg:space-x-12 lg:flex-nowrap mt-4   w-full lg:max-w-lg">
                     
@@ -279,7 +348,7 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
         <span 
              
             class = " text-black-900 "> 
-
+            
             <i class="fab fa-instagram fa-3x lg:fa-3x "></i>
         </span> 
     </a> 
@@ -307,8 +376,9 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
     </section>
     
     
+    
     <section   id= "services" class="lg:mt-0 relative w-full px-8 font-sans leading-6  bg-green-700 border-0 border-green-200 text-white border-solid ">
-        <div class="flex flex-col items-center max-w-6xl px-8 py-20 mx-auto leading-6 border-solid md:items-stretch md:justify-center md:py-24">
+        <div class="flex flex-col items-center max-w-6xl px-8 py-20 mx-auto leading-6 border-solid md:items-stretch md:justify-center md:py-24 ">
             
             <h2 class="mb-3 lg:pr-9 text-3xl mx-auto font-extrabold leading-none sm:text-4xl lg:text-7xl tracking-wide text-center">
                 Our Services
@@ -495,11 +565,13 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
     </section>
     
     
-        <div id="our-work" class="relative mb-0 w-full pt-12 overflow-hidden  bg-white text-green-700   md:pt-20 xl:pt-20 xl:pb-20">
+    
+
+        <div id="our-work" class="relative mb-0 w-full pt-12 overflow-hidden   bg-white text-green-700   md:pt-20 xl:pt-20 xl:pb-20">
             <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0">
                 <h2 class="mb-3 text-3xl font-extrabold leading-none sm:text-4xl lg:text-7xl tracking-wide  text-center">Our Best Work</h2>
                 <h2 class="my-3 mb-10 text-xl font-medium  text-black-900  text-center">See why our customers love us</h2>
-                <div class="flex flex-wrap md:mx-4 md:mb-8 md:flex-row" x-data="{ open:false, activeSlide : 0, slides: [   [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/JNCJDPJAYXGWJCBC6SIRPE212EFAOH7RJBY4OV9V.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/J6UJTK39V273EEOPS969MRLKPK0GBZCOZHF1MM5R.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/HFHRZN1HVZILCDFQQB7MEC4YRFTO6OYTDB45G405.png', 'photo'],   ] }" @keydown.escape= "open = false"   >
+                <div class="flex flex-wrap md:mx-4 md:mb-8 md:flex-row" x-data="{ open:false, activeSlide : 0, slides: [   [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/JNCJDPJAYXGWJCBC6SIRPE212EFAOH7RJBY4OV9V.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/J6UJTK39V273EEOPS969MRLKPK0GBZCOZHF1MM5R.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png', 'photo'],    [ 'https://landing-page-app-hero-images.s3.amazonaws.com/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png', 'photo'],   ] }" @keydown.escape= "open = false"   >
                                         
                             
                                   
@@ -528,7 +600,12 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                                         
                             
                                   
-                            <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 5; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://landing-page-app-hero-images.s3.amazonaws.com/media/HFHRZN1HVZILCDFQQB7MEC4YRFTO6OYTDB45G405.png"  alt = "Photo number 6 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
+                            <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 5; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://landing-page-app-hero-images.s3.amazonaws.com/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png"  alt = "Photo number 6 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
+                        
+                                        
+                            
+                                  
+                            <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 6; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://landing-page-app-hero-images.s3.amazonaws.com/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png"  alt = "Photo number 7 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                         
                      
                                         
@@ -647,7 +724,15 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
 
     
 
+<div id="service-area-array" class = "hidden">
 
+    
+        [[&#x27;Erie County&#x27;, &#x27;NY&#x27;, 50]]
+        <div class="city"> Erie County </div>
+        <div class="state"> NY </div>
+        <div class="radius"> 50 </div>
+    
+</div> 
 
 <section id="find-us" class="py-16   bg-white text-green-700  md:py-20 lg:py-20">
 
@@ -658,16 +743,16 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
 
     <h2  class="mb-5 text-3xl  mx-auto text-center font-extrabold leading-none sm:text-4xl lg:text-7xl"> Service Areas </h2>
     <h2  class="my-3 mb-10  text-xl font-medium text-black-900 text-center"> Proudly Serving   Erie County & Surrounding Areas   </h2>
-        
+    <div style="height:500px; width:100%;" id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSw3qRocbSgfTrtxZbCsTjSHZaaJuUXF4&callback=initMap&libraries=&v=weekly"
+      async
+    ></script> 
 
 
-    <iframe
-            width="100%"
-            height="500px"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPscVsAYq9Mo6GmcMKF1tUfrWWN2Gt93M
-                &q=Erie County, NY" allowfullscreen>
-        </iframe> 
+    
     </div>
 </section>
 
@@ -701,6 +786,7 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
 </div> 
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  
 
 </body>
 </html>
