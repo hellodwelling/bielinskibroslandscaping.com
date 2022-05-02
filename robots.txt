@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: 
-Sitemap: https://bielinskibroslandscaping.com/sitemap.xml
