@@ -34,12 +34,9 @@
        
      
     
-    
     <link href="https://prophone.herokuapp.com/staticfiles/landing_page_gen/style.css" rel="stylesheet">
-    
     <link href="https://prophone.herokuapp.com/staticfiles/landing_page_gen/render.css" rel="stylesheet">
-    
-    <script src="https://prophone.herokuapp.com/staticfiles/landing_page_gen/render.js"></script> 
+    <script src="https://prophone.herokuapp.com/staticfiles/landing_page_gen/render.js"></script>
 </head>
 
 <body>
@@ -48,7 +45,7 @@
 
 <div class = "flex w-full flex-col">  
     <div class="fixed z-40 w-full lg:h-25 lg:py-4 items-start justify-start  bg-white text-gray-700  dark-mode:text-gray-200 dark-mode:bg-gray-800">
-  <div x-data="{ open: false }" class="flex flex-col lg:flex-r max-w-screen-xl px-4 mx-auto lg:items-center lg:justify-between lg:flex-row lg:px-6 lg:px-8">
+  <div x-data="{ open: false,buttonDisabled: false }" class="flex flex-col lg:flex-r max-w-screen-xl px-4 mx-auto lg:items-center lg:justify-between lg:flex-row lg:px-6 lg:px-8">
     <div class="py-4 flex flex-row items-center justify-between">
       
         <a href= " #about "> <img class="h-16 w-auto relative" src="https://landing-page-app-hero-images.s3.amazonaws.com/media/M7JHLJ2DYOXH9UXNR25MESYJJ8KRCVZ67TPRIDKJ.png" alt="Bielinski Bros Landscaping logo"> </a>
@@ -104,7 +101,7 @@
       
           <a target = "_blank"  x-on:click.prevent="open = true" class="" href="">Send us a Text</a>
             <div x-show.transition.opacity="open" class="transform-none p-4 fixed h-screen w-screen flex justify-center items-center bottom-0 right-0 bg-black bg-opacity-75 z-50">
-    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5 z-50">
+    <form  x-data="{ buttonDisabled: false }" x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5 z-50">
             <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
         <div class="block mb-4 border border-gray-200 rounded-lg">
             <input type="text" name="first-name" id="0-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
@@ -119,14 +116,18 @@
             <textarea name="message" cols="5" id="0-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
         </div>
         <div class="block">
-        <button type="button" 
+        <button
+
+                x-on:click.debounce.500ms="buttonDisabled = true ;send_sms(0, 'Bielinski-Bros-Landscaping')"
+                 x-bind:disabled="buttonDisabled"
+                type="button"
          
             onMouseOver="this.style.backgroundColor='#047857'; this.style.color='#000000' "
             onMouseOut="this.style.backgroundColor='#000000'; this.style.color='white'"
             style="background-color:#000000; color:white"               
 
          
-        onclick= "send_sms(0, 'Bielinski-Bros-Landscaping')" 
+
         class="w-full px-3 py-4 font-bold font-lg text-white  bg-black-900 text-white hover:bg-black hover:text-black-900 rounded-lg">Send</button> 
         </div>           
 
@@ -147,7 +148,6 @@ class="flex relative flex-col w-full  bg-green-700 text-white  lg:flex-row lg:fl
             </h2>
             
             <h1 class="pt-5 lg:text-xl text-center lg:text-left">
-                <!--   -->
                 We give you your weekends back! Commercial and Residential expert landscaping and hardscaping in Erie Country & surrounding areas. Satisfaction guaranteed!
             </h1>
             
@@ -179,7 +179,7 @@ class="flex relative flex-col w-full  bg-green-700 text-white  lg:flex-row lg:fl
 </button>
 
         <div x-show.transition.opacity="open" class="transform-none p-4 fixed h-screen w-screen flex justify-center items-center bottom-0 right-0 bg-black bg-opacity-75 z-50">
-    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5 z-50">
+    <form  x-data="{ buttonDisabled: false }" x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5 z-50">
             <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
         <div class="block mb-4 border border-gray-200 rounded-lg">
             <input type="text" name="first-name" id="1-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
@@ -194,14 +194,18 @@ class="flex relative flex-col w-full  bg-green-700 text-white  lg:flex-row lg:fl
             <textarea name="message" cols="5" id="1-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
         </div>
         <div class="block">
-        <button type="button" 
+        <button
+
+                x-on:click.debounce.500ms="buttonDisabled = true ;send_sms(1, 'Bielinski-Bros-Landscaping')"
+                 x-bind:disabled="buttonDisabled"
+                type="button"
          
             onMouseOver="this.style.backgroundColor='#047857'; this.style.color='#000000' "
             onMouseOut="this.style.backgroundColor='#000000'; this.style.color='white'"
             style="background-color:#000000; color:white"               
 
          
-        onclick= "send_sms(1, 'Bielinski-Bros-Landscaping')" 
+
         class="w-full px-3 py-4 font-bold font-lg text-white  bg-black-900 text-white hover:bg-black hover:text-black-900 rounded-lg">Send</button> 
         </div>           
 
@@ -230,7 +234,7 @@ class="flex relative flex-col w-full  bg-green-700 text-white  lg:flex-row lg:fl
 </button>
 
         <div x-show.transition.opacity="open" class="transform-none p-4 fixed h-screen w-screen flex justify-center items-center bottom-0 right-0 bg-black bg-opacity-75 z-50">
-    <form x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5 z-50">
+    <form  x-data="{ buttonDisabled: false }" x-on:click.away="open = false" x-show.transition="open" class=" text-black max-w-3xl max-h-full h-auto p-8 py-10 overflow-auto bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7 mt-16 md:mt-0 md:w-2/5 z-50">
             <h3 class="mb-6 text-2xl font-medium text-black text-center">Send us a Text</h3>
         <div class="block mb-4 border border-gray-200 rounded-lg">
             <input type="text" name="first-name" id="2-first-name" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="First Name">
@@ -245,14 +249,18 @@ class="flex relative flex-col w-full  bg-green-700 text-white  lg:flex-row lg:fl
             <textarea name="message" cols="5" id="2-message" class="block w-full px-4 py-3 border-2 border-transparent rounded-lg focus:border-blue-500 focus:outline-none" placeholder="What is your message?"></textarea>
         </div>
         <div class="block">
-        <button type="button" 
+        <button
+
+                x-on:click.debounce.500ms="buttonDisabled = true ;send_sms(2, 'Bielinski-Bros-Landscaping')"
+                 x-bind:disabled="buttonDisabled"
+                type="button"
          
             onMouseOver="this.style.backgroundColor='#047857'; this.style.color='#000000' "
             onMouseOut="this.style.backgroundColor='#000000'; this.style.color='white'"
             style="background-color:#000000; color:white"               
 
          
-        onclick= "send_sms(2, 'Bielinski-Bros-Landscaping')" 
+
         class="w-full px-3 py-4 font-bold font-lg text-white  bg-black-900 text-white hover:bg-black hover:text-black-900 rounded-lg">Send</button> 
         </div>           
 
@@ -308,7 +316,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
         </div>
 
         
-        
         <br>
     </div>
 
@@ -325,7 +332,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
         </div>
 
         
-        
         <br>
     </div>
 
@@ -338,7 +344,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
             Locally Owned
         </div>
 
-        
         
         <br>
     </div>
@@ -353,7 +358,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
             Licensed
         </div>
 
-        
         
         <br>
     </div>
@@ -421,7 +425,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
     </section>
     
     
-    
     <section  style= "background-color:#047857"   id= "services" class="lg:mt-0 relative w-full px-8 font-sans leading-6  bg-green-700 border-0 border-green-200 text-white border-solid ">
         <div class="flex flex-col items-center max-w-6xl px-8 py-20 mx-auto leading-6 border-solid md:items-stretch md:justify-center md:py-24 ">
             
@@ -438,7 +441,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Sod</h3>
                             <p
@@ -451,7 +453,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Debris Cleanup</h3>
                             <p
@@ -464,7 +465,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Driveway & Sidewalk Cleaning</h3>
                             <p
@@ -477,7 +477,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Flower Bed Installation</h3>
                             <p
@@ -490,7 +489,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Gutter Clean Out</h3>
                             <p
@@ -503,7 +501,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Leaf Raking & Bagging</h3>
                             <p
@@ -516,7 +513,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Shrub Trimming</h3>
                             <p
@@ -529,7 +525,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Mulch Installation</h3>
                             <p
@@ -542,7 +537,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Power Washing</h3>
                             <p
@@ -555,7 +549,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Weed Control</h3>
                             <p
@@ -568,7 +561,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Stone Wall Installation</h3>
                             <p
@@ -581,7 +573,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Demolition</h3>
                             <p
@@ -594,7 +585,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Grading</h3>
                             <p
@@ -607,7 +597,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
                     
                 <div class="max-w-xs col-span-4 font-sans border-0 border-green-200 ">
                     <div class="box-border flex flex-col items-center  h-full px-2 py-4 md:py-8 mx-4 leading-6 text-center border-solid ">
-                        
                         <div  class="md:mt-6 font-sans text-center border-0 border-green-200 ">
                             <h3  style= "color:#000000"  class="box-border text-xl font-bold leading-none tracking-wider border-solid text-black-900  ">Walkways</h3>
                             <p
@@ -630,62 +619,50 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
         <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0">
             <h2  style= "color:#047857" class="mb-3 text-3xl font-extrabold leading-none sm:text-4xl lg:text-7xl tracking-wide  text-center">Our Best Work</h2>
             <h2  style= "color:#000000" class="my-3 mb-10 text-xl font-medium  text-black-900  text-center">See why our customers love us</h2>
-            <div class="flex flex-wrap md:mx-4 md:mb-8 md:flex-row" x-data="{ open:false, activeSlide : 0, slides: [   [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/eca81b0c-906a-4805-8023-55d35bfa21f8.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/XYC8C90HISWO3NLIQLW9TZ549QCOQQLPB88KBMLE.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/D32YIPB9EXNKJFYHGXK4ZV3AUQXLN8PO4RUZ760U.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/3LRLB0IQL3W3102CHK39SFUWLEYTF0SGIMVM8TKQ.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/38aecf6a-da59-4653-a2d4-ffb875fcb96d.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/0d96cc25-484d-4ac6-826c-13dadf4bba72.jpeg', 'photo'],   ] }" @keydown.escape= "open = false"   >
-                <!-- <div class="flex flex-wrap md:mx-4 md:mb-8 md:flex-row" x-data="{ open:false, activeSlide : 0, slides: [   [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/eca81b0c-906a-4805-8023-55d35bfa21f8.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/XYC8C90HISWO3NLIQLW9TZ549QCOQQLPB88KBMLE.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/D32YIPB9EXNKJFYHGXK4ZV3AUQXLN8PO4RUZ760U.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/3LRLB0IQL3W3102CHK39SFUWLEYTF0SGIMVM8TKQ.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/38aecf6a-da59-4653-a2d4-ffb875fcb96d.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/1026x720/media/0d96cc25-484d-4ac6-826c-13dadf4bba72.jpeg', 'photo'],   ] }" @keydown.escape= "open = false"   > -->
+            <div class="flex flex-wrap md:mx-4 md:mb-8 md:flex-row" x-data="{ open:false, activeSlide : 0, slides: [   [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/0d96cc25-484d-4ac6-826c-13dadf4bba72.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/38aecf6a-da59-4653-a2d4-ffb875fcb96d.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/3LRLB0IQL3W3102CHK39SFUWLEYTF0SGIMVM8TKQ.jpeg', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/D32YIPB9EXNKJFYHGXK4ZV3AUQXLN8PO4RUZ760U.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/XYC8C90HISWO3NLIQLW9TZ549QCOQQLPB88KBMLE.png', 'photo'],    [ 'https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/eca81b0c-906a-4805-8023-55d35bfa21f8.png', 'photo'],   ] }" @keydown.escape= "open = false"   >
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 0; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/eca81b0c-906a-4805-8023-55d35bfa21f8.png"  alt = "-image"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 0; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/eca81b0c-906a-4805-8023-55d35bfa21f8.png"  alt = "-image"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 0; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/0d96cc25-484d-4ac6-826c-13dadf4bba72.jpeg"  alt = "-image"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 1; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/XYC8C90HISWO3NLIQLW9TZ549QCOQQLPB88KBMLE.png"  alt = "Photo number 1 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 1; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/XYC8C90HISWO3NLIQLW9TZ549QCOQQLPB88KBMLE.png"  alt = "Photo number 1 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 1; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/38aecf6a-da59-4653-a2d4-ffb875fcb96d.jpeg"  alt = "-image"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 2; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/D32YIPB9EXNKJFYHGXK4ZV3AUQXLN8PO4RUZ760U.png"  alt = "Photo number 2 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 2; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/D32YIPB9EXNKJFYHGXK4ZV3AUQXLN8PO4RUZ760U.png"  alt = "Photo number 2 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 2; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png"  alt = "Photo number 8 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 3; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png"  alt = "Photo number 3 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 3; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png"  alt = "Photo number 3 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 3; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png"  alt = "Photo number 7 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 4; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/3LRLB0IQL3W3102CHK39SFUWLEYTF0SGIMVM8TKQ.jpeg"  alt = "Photo number 4 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 4; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/3LRLB0IQL3W3102CHK39SFUWLEYTF0SGIMVM8TKQ.jpeg"  alt = "Photo number 4 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 4; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png"  alt = "Photo number 6 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 5; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png"  alt = "Photo number 5 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 5; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png"  alt = "Photo number 5 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 5; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/MF3YF6BWXKZAHAAU25RYZ4A77RGSCYFWY1FYDR1W.png"  alt = "Photo number 5 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 6; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png"  alt = "Photo number 6 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 6; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/IPCXS8GV8YS6D9LBQ1H0EC8AB28P3A1VVNIT0YNV.png"  alt = "Photo number 6 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 6; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/3LRLB0IQL3W3102CHK39SFUWLEYTF0SGIMVM8TKQ.jpeg"  alt = "Photo number 4 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 7; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png"  alt = "Photo number 7 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 7; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/4CTU3TBHF0VJ2K1D1TXZX0P7F4XH7458ZMDZRL5X.png"  alt = "Photo number 7 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 7; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/7R6GWQIYIF7Z01UGHLDUIXUQ028LQ0QU1L5316I3.png"  alt = "Photo number 3 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 8; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png"  alt = "Photo number 8 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 8; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/CTLZ4T14A8Q7S78MII5PQ7GLICFAJ7R3ZQ41QWIL.png"  alt = "Photo number 8 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 8; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/D32YIPB9EXNKJFYHGXK4ZV3AUQXLN8PO4RUZ760U.png"  alt = "Photo number 2 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 9; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/38aecf6a-da59-4653-a2d4-ffb875fcb96d.jpeg"  alt = "-image"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 9; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/38aecf6a-da59-4653-a2d4-ffb875fcb96d.jpeg"  alt = "-image"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 9; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/XYC8C90HISWO3NLIQLW9TZ549QCOQQLPB88KBMLE.png"  alt = "Photo number 1 of Bielinski Bros Landscaping&#x27;s best work performing a null job"   loading="lazy" ></div>
                     
                                     
                         
-                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 10; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/media/0d96cc25-484d-4ac6-826c-13dadf4bba72.jpeg"  alt = "-image"   loading="lazy" ></div>
-                        <!-- <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 10; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/684x480/media/0d96cc25-484d-4ac6-826c-13dadf4bba72.jpeg"  alt = "-image"   loading="lazy" ></div> -->
+                        <div class="flex cursor-pointer sm:h-30 md:h-auto md:w-1/3 px-4 mb-8 hover:bg-opacity-40" @click="activeSlide = 10; open = true; " ><img class="rounded shadow-md object-cover w-full h-60" src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/filters:strip_exif()/filters:format(webp)/media/eca81b0c-906a-4805-8023-55d35bfa21f8.png"  alt = "-image"   loading="lazy" ></div>
                     
                  
                                     
@@ -780,7 +757,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
 
         
 
-            <!-- Question 1 -->
             <div x-data="{ show: false }" class="relative overflow-hidden border-b border-green-100 select-none">
                 <h3  
                 onMouseOver="this.style.color='#000000' "
@@ -830,26 +806,119 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
 
     <h2  style= "color:#047857"   class="mb-5 text-3xl  mx-auto text-center font-extrabold leading-none sm:text-4xl lg:text-7xl"> Service Areas </h2>
     <h2  style= "color:#000000"  class="my-3 mb-10  text-xl font-medium text-black-900 text-center"> Proudly Serving   Erie County & Surrounding Areas   </h2>
-    <div style="height:500px; width:100%;" id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSw3qRocbSgfTrtxZbCsTjSHZaaJuUXF4&callback=initMap&libraries=&v=weekly"
-      async
-    ></script> 
+    <div class="relative col-span-3 row-start-1 mt-6 lg:mt-0 lg:col-start-1">
+        <div aria-hidden="true" x-cloak x-data="{ shown: false }" x-intersect.half="shown = true" class="hidden lg:block">
+            <svg
+                x-show="shown"
+                x-transition:enter="transition duration-1000"
+                x-transition:enter-start="transform translate-x-full opacity-0"
+                x-transition:enter-end="transform translate-x-0 opacity-100"
+                x-transition:leave="transition duration-1000 opacity-100"
+                x-transition:leave-start="transform opacity-0"
+                x-transition:leave-end="transform translate-x-full"
+                class="absolute top-0 -right-48"
+                width="404"
+                height="404"
+                fill="none"
+                viewBox="0 0 404 404"
+            >
+                <defs>
+                    <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                    </pattern>
+                </defs>
+                <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
+            </svg>
+        </div>
+        <div class="relative h-[500px] w-full rounded-2xl shadow-xl overflow-hidden">
+            <div class="w-full h-full bg-gray-400">
+                <div style="height:500px; width:100%;" id="map"></div>
+                <script >
+                    async function coordinate(url) {
+const res = await fetch(url)
+const coordinates = await res.json()
+return [
+    coordinates.results[0].geometry.location.lat,
+    coordinates.results[0].geometry.location.lng,
+]
+}
+async function initMap() {
+let radius = document.querySelector('#radius').innerText
+let city = document.querySelector('#city').innerText
+let state = document.querySelector('#state').innerText
+console.log('radius - city ', city)
+console.log('radius - radius ', state)
+let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}+${state}&key=AIzaSyDuL9weltDy_kOcISLRucx5-JSFsezZpVE`
 
+let coordinates = await coordinate(url)
 
-    
+const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {
+        lat: coordinates[0],
+        lng: coordinates[1],
+    },
+    mapTypeId: 'terrain',
+})
+
+const cityCircle = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    map,
+    animation: google.maps.Animation.DROP,
+    center: {
+        lat: coordinates[0],
+        lng: coordinates[1],
+    },
+    radius: radius * 1638,
+})
+}
+
+const target = document.querySelector('#map')
+
+const handleIntersection = (entries) => {
+console.log("it got here")
+entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src =
+            'https://maps.googleapis.com/maps/api/js?key=AIzaSyDSw3qRocbSgfTrtxZbCsTjSHZaaJuUXF4&callback=initMap&libraries=&v=weekly'
+        document.body.appendChild(script)
+        console.log("it got there")
+        observer.unobserve(entry.target)
+    }
+})
+}
+const observer = new IntersectionObserver(handleIntersection)
+observer.observe(target)
+            
+                </script>
+<!--                    <script-->
+<!--                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSw3qRocbSgfTrtxZbCsTjSHZaaJuUXF4&callback=initMap&libraries=&v=weekly"-->
+<!--                    async-->
+<!--                    defer-->
+<!--                  ></script> -->
+          
+            <span class="sr-only" id="city">Erie County</span>
+            <span class="sr-only" id="state">NY</span>
+            <span class="sr-only" id="radius">50</span>
+            </div>
+        </div>
+    </div>
+
     </div>
 </section>
 
 
 
     <section  style= "background-color:#047857"   class="py-10 bg-green-700">
-    
         <div class="flex flex-col justify-around text-center md:flex-row">
             <p class="order-last text-sm leading-tight text-black-900 md:order-first"> Crafted with <a  href="https://www.prophone.com/prosite" class="  text-white ">ProPhone</a>. Built with ❤️ by our team. </p>
-             
             <ul class="flex flex-row flex-wrap text-center justify-center pb-3 lg:-ml-4 lg:-mr-4 text-sm">
                 <li> <a  style= "color:#000000"  href="#about" class="px-2 md:px-4 text-black-900 hover:text-white">About Us</a> </li>
                 
@@ -876,7 +945,6 @@ class="flex flex-col flex-grow w-full overflow-hidden  lg:flex-row sm:mx-auto  b
 </div> 
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-  
 
 </body>
 </html>
